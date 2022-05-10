@@ -1,53 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}INDEX{% endblock %}
+{% block content %}
 
-<form action="{% url 'thanks_page' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">ОТПРАВИТЬ</button>
-</form>
+<h2>Данные из индекса</h2>
+{% include 'index_old.html' %}
 
-<br>
-<br>
-<br>
-<br>
-<br>
+{% endblock %}
 
-<style>
-    .css_input {
-    color: yellow;
-    background-color: red;
-    }
-</style>
-
-
-
-{% if object_list %}
-<table border="1">
-    <tr>
-        <th>Id</th>
-        <th>Дата</th>
-        <th>Имя</th>
-        <th>Телефон</th>
-    </tr>
-    {% for obj in object_list %}
-    <tr>
-        <th>{{ obj.id }}</th>
-        <th>{{ obj.order_dt }}</th>
-        <th>{{ obj.order_name }}</th>
-        <th>{{ obj.order_phone }}</th>
-    </tr>
-    {% endfor %}
-</table>
-{% else %}
-Нет данных
-{% endif %}
-
-<h1>{{ text }}</h1>
-</body>
-</html>
